@@ -18,9 +18,9 @@ while True:
         ev3.screen.print("Color detectado:")
         ev3.screen.print("Rojo")   
 
-        wait(5000)
+        wait(2500)
         
     else:
         ev3.screen.print("Desconocido")
 
-        wait(5000)
+        wait(2500)
