@@ -9,20 +9,24 @@ ev3 = EV3Brick()
 color_sensor = ColorSensor(Port.S1)
 mA = Motor(Port.A)
 mD = Motor(Port.D)
-binario = []
+contador = 0
+linea_negra = False
 
-mA.run(300)
-mD.run(300)
+for i in range(750):
+    
+    mA.run(100)
+    mD.run(100)
 
-wait(3000)
+    color_detectado = color_sensor.color()
 
-if color_sensor.color() == Color.BLACK:
-    binario.append("0")
-    wait(3500)
-
-ev3.screen.print(binario)
-
-wait(1000)
+    if color_detectado == Color.BLACK and not linea_negra:
+        contador = contador + 1
+        linea_negra = True
+    elif color_detectado != Color.BLACK:
+        linea_negra = False
+        ev3.screen.clear()
+        ev3.screen.print("Contador:", contador)
+        wait(200)
 
 mA.brake()
 mD.brake()
