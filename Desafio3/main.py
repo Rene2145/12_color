@@ -10,22 +10,29 @@ color_sensor = ColorSensor(Port.S1)
 mA = Motor(Port.A)
 mD = Motor(Port.D)
 contador = 0
+distancia = 0
 linea_negra = False
 
-while contador <= 7:
+while contador < 9:
     
-    mA.run(100)
-    mD.run(100)
+    mA.run(45)
+    mD.run(45)
 
     color_detectado = color_sensor.color()
 
-    if color_detectado == Color.BLACK and not linea_negra:
+    if color_detectado == Color.BLACK:
         contador = contador + 1
         linea_negra = True
     elif color_detectado != Color.BLACK:
         linea_negra = False
+        contador = 0
+    if color >1:
         ev3.screen.clear()
-        ev3.screen.print("Contador:", contador)
+        ev3.screen.print("Raya")
+        wait(300)
+    else
+        ev3.screen.clear()
+        ev3.screen.print("Punto")    
         wait(300)
 
 mA.brake()
