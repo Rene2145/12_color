@@ -12,7 +12,7 @@ mD = Motor(Port.D)
 contador = 0
 linea_negra = False
 
-for i in range(750):
+while contador <= 7:
     
     mA.run(100)
     mD.run(100)
@@ -26,7 +26,7 @@ for i in range(750):
         linea_negra = False
         ev3.screen.clear()
         ev3.screen.print("Contador:", contador)
-        wait(200)
+        wait(300)
 
 mA.brake()
 mD.brake()
