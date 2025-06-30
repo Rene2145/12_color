@@ -13,10 +13,11 @@ lS = ColorSensor(Port.S1)
 while True:
     reflejo = lS.reflection()
 
-    if reflejo > 40:
+    if reflejo > umbral:
         mA.run(200)
-        mD.run(68)
+        mD.brake()
     else:
-        mA.run(68)
+        mA.brake()
         mD.run(200)
+
     wait(10)
